@@ -1,17 +1,7 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useAuth } from "../App";
-import { supabase } from "@/lib/supabase";
+import { Link, Outlet } from "react-router-dom";
 import { Button } from "./ui/button";
 
 export function MainLayout() {
-  const { user } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate("/login"); // Redireciona para o login após sair
-  };
-
   return (
     <div className="flex min-h-screen flex-col">
       <header className="border-b bg-background">
@@ -20,14 +10,7 @@ export function MainLayout() {
             Luxe Barber Suite
           </Link>
           <nav className="flex items-center gap-4">
-            {user ? (
-              <>
-                <span className="text-sm text-muted-foreground hidden sm:inline">Olá, {user.email}</span>
-                <Button variant="outline" onClick={handleLogout}>Sair</Button>
-              </>
-            ) : (
-              <Button asChild><Link to="/login">Login</Link></Button>
-            )}
+            <Button asChild><Link to="/login">Login</Link></Button>
           </nav>
         </div>
       </header>
