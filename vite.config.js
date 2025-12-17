@@ -1,3 +1,4 @@
+import path from "path"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
@@ -6,4 +7,9 @@ export default defineConfig({
   // O nome do repositório é usado como caminho base para o deploy no GitHub Pages
   base: '/luxe-barber-suite-main/',
   plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(new URL(import.meta.url).pathname, "./src"),
+    },
+  },
 })
