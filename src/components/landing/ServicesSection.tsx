@@ -1,48 +1,21 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Service } from "@/pages/Index";
 
-interface ServicesSectionProps {
-  services?: Service[];
-  isLoading: boolean;
-  error: Error | null;
-}
+// Dados estáticos de exemplo para os serviços
+const staticServices = [
+  { id: 1, name: "Corte de Cabelo", description: "Estilo moderno e clássico.", price: 50 },
+  { id: 2, name: "Barba", description: "Aparar e modelar a barba.", price: 30 },
+  { id: 3, name: "Corte + Barba", description: "Pacote completo para um visual impecável.", price: 75 },
+];
 
-export default function ServicesSection({ services, isLoading, error }: ServicesSectionProps) {
+export default function ServicesSection() {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
   };
 
-  const renderContent = () => {
-    if (isLoading) {
-      // Exibe "esqueletos" de carregamento enquanto os dados são buscados
-      return Array.from({ length: 3 }).map((_, index) => (
-        <Card key={index} className="flex flex-col">
-          <CardHeader>
-            <Skeleton className="h-6 w-3/4" />
-            <Skeleton className="h-4 w-full mt-2" />
-            <Skeleton className="h-4 w-2/3 mt-1" />
-          </CardHeader>
-          <CardContent className="flex-grow" />
-          <CardFooter className="flex justify-between items-center">
-            <Skeleton className="h-8 w-24" />
-            <Skeleton className="h-10 w-28" />
-          </CardFooter>
-        </Card>
-      ));
-    }
-
-    if (error) {
-      return <p className="text-destructive col-span-full text-center">Erro ao carregar os serviços. Tente novamente mais tarde.</p>;
-    }
-
-    if (!services || services.length === 0) {
-      return <p className="text-muted-foreground col-span-full text-center">Nenhum serviço disponível no momento.</p>;
-    }
-
-    return services.map((service) => (
+  const renderContent = () => (
+    staticServices.map((service) => (
       <Card key={service.id} className="flex flex-col">
         <CardHeader>
           <CardTitle>{service.name}</CardTitle>
@@ -54,8 +27,8 @@ export default function ServicesSection({ services, isLoading, error }: Services
           <Button asChild><Link to="/booking">Agendar</Link></Button>
         </CardFooter>
       </Card>
-    ));
-  };
+    ))
+  );
 
   return (
     <section id="services" className="py-12 md:py-24 bg-muted">
