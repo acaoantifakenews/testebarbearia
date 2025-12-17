@@ -7,7 +7,7 @@ import Index from "./pages/Index";
 import Booking from "./pages/Booking";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
-import { AuthProvider } from "@/contexts/AuthContext.tsx";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { LoginPage } from "./pages/LoginPage";
 import { SignupPage } from "./pages/SignupPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
