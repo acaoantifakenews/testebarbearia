@@ -9,9 +9,7 @@ export function MainLayout() {
           <Link to="/" className="text-lg font-bold">
             Luxe Barber Suite
           </Link>
-          <nav className="flex items-center gap-4">
-            <Button asChild><Link to="/login">Login</Link></Button>
-          </nav>
+          <nav className="flex items-center gap-4" />
         </div>
       </header>
       <main className="flex-1"><Outlet /></main>
