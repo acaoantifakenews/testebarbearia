@@ -18,6 +18,24 @@
   </head>
 
   <body>
+    <script>
+      (function(){
+        try {
+          if (location.hash) return;
+          var p = location.pathname || '/';
+          var parts = p.split('/');
+          // if no repo segment (user site) or nothing to do, skip
+          if (!parts[1] || parts[1] === '') return;
+          var subparts = parts.slice(2).filter(Boolean);
+          var newHash = '/' + (subparts.join('/') || '');
+          var repoRoot = '/' + parts[1] + '/';
+          if (newHash === '/') newHash = '/';
+          location.replace(repoRoot + '#' + newHash);
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
     <div id="root"></div>
   </body>
 </html>
