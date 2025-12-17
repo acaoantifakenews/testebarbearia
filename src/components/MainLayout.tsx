@@ -1,5 +1,5 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "../App";
 import { supabase } from "@/lib/supabase";
 import { Button } from "./ui/button";
 
