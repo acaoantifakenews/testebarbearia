@@ -58,60 +58,58 @@ export function SignIn() {
   }
 
   return (
-    <div className="flex h-full items-center justify-center">
-      <Card className="w-full max-w-sm">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardHeader>
-              <CardTitle className="text-2xl">Sign In</CardTitle>
-              <CardDescription>
-                Enter your email below to sign in to your account.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-4">
-              {error && (
-                <p role="alert" className="text-center text-sm text-destructive">
-                  {error}
-                </p>
-              )}
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="m@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </CardContent>
-            <CardFooter className="flex-col items-start gap-2">
-              <Button className="w-full" type="submit" disabled={isLoading}>
-                {isLoading ? "Carregando..." : "Sign In"}
-              </Button>
-              <p className="text-xs text-muted-foreground">
-                Don't have an account? <Link to="/sign-up" className="underline">Sign up</Link>
+    <Card className="w-full max-w-sm">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <CardHeader>
+            <CardTitle className="text-2xl">Sign In</CardTitle>
+            <CardDescription>
+              Enter your email below to sign in to your account.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4">
+            {error && (
+              <p role="alert" className="text-center text-sm text-destructive">
+                {error}
               </p>
-            </CardFooter>
-          </form>
-        </Form>
-      </Card>
-    </div>
+            )}
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="m@example.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </CardContent>
+          <CardFooter className="flex-col items-start gap-2">
+            <Button className="w-full" type="submit" disabled={isLoading}>
+              {isLoading ? "Carregando..." : "Sign In"}
+            </Button>
+            <p className="text-xs text-muted-foreground">
+              Don't have an account? <Link to="/sign-up" className="underline">Sign up</Link>
+            </p>
+          </CardFooter>
+        </form>
+      </Form>
+    </Card>
   );
 }

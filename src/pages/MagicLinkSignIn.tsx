@@ -73,26 +73,24 @@ export function MagicLinkSignIn() {
   }
 
   return (
-    <div className="flex h-full items-center justify-center">
-      <Card className="w-full max-w-sm">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardHeader>
-              <CardTitle className="text-2xl">Acessar ou Criar Conta</CardTitle>
-              <CardDescription>
-                Para agendar, insira seu e-mail. Você receberá um link de acesso.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-4">
-              {error && <p role="alert" className="text-center text-sm text-destructive">{error}</p>}
-              <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email</FormLabel> <FormControl> <Input type="email" placeholder="seu@email.com" {...field} /> </FormControl> <FormMessage /> </FormItem> )} />
-            </CardContent>
-            <CardFooter>
-              <Button className="w-full" type="submit" disabled={isLoading}>{isLoading ? "Enviando..." : "Receber link de acesso"}</Button>
-            </CardFooter>
-          </form>
-        </Form>
-      </Card>
-    </div>
+    <Card className="w-full max-w-sm">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <CardHeader>
+            <CardTitle className="text-2xl">Acessar ou Criar Conta</CardTitle>
+            <CardDescription>
+              Para agendar, insira seu e-mail. Você receberá um link de acesso.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4">
+            {error && <p role="alert" className="text-center text-sm text-destructive">{error}</p>}
+            <FormField control={form.control} name="email" render={({ field }) => ( <FormItem> <FormLabel>Email</FormLabel> <FormControl> <Input type="email" placeholder="seu@email.com" {...field} /> </FormControl> <FormMessage /> </FormItem> )} />
+          </CardContent>
+          <CardFooter>
+            <Button className="w-full" type="submit" disabled={isLoading}>{isLoading ? "Enviando..." : "Receber link de acesso"}</Button>
+          </CardFooter>
+        </form>
+      </Form>
+    </Card>
   );
 }
