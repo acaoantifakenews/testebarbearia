@@ -5,12 +5,8 @@ import Index from "./pages/Index.tsx";
 import Booking from "./pages/Booking.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import { MainLayout } from "./components/MainLayout";
-import { SignIn } from "./pages/SignIn.tsx";
-import { SignUp } from "./pages/SignUp.tsx";
+import { MainLayout } from "./components/MainLayout.tsx";
 import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
-import { AuthLayout } from "./components/AuthLayout.tsx";
-import { MagicLinkSignIn } from "./pages/MagicLinkSignIn.tsx";
 
 const App = () => (
   <>
@@ -18,13 +14,6 @@ const App = () => (
     <Sonner />
     <HashRouter>
       <Routes>
-        {/* Rotas Públicas com AuthLayout */}
-        <Route element={<AuthLayout />}>
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/auth/magic-link" element={<MagicLinkSignIn />} />
-        </Route>
-
         {/* Rotas Privadas com MainLayout */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Index />} />
