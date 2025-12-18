@@ -1,6 +1,5 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, Outlet } from "react-router-dom";
 import Index from "./pages/Index.tsx";
@@ -12,13 +11,13 @@ import { SignIn } from "./pages/SignIn.tsx";
 import { SignUp } from "./pages/SignUp.tsx";
 import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
 import { AuthLayout } from "./components/AuthLayout.tsx";
+import { TooltipProvider } from "./components/ui/tooltip.tsx";
 import { MagicLinkSignIn } from "./pages/MagicLinkSignIn.tsx";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
       <Toaster />
       <Sonner />
       <HashRouter>
@@ -41,7 +40,6 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>
-    </TooltipProvider>
   </QueryClientProvider>
 );
 

@@ -11,6 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { TooltipProvider } from "./ui/tooltip";
 
 export function MainLayout() {
   const { session } = useAuth();
