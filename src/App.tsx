@@ -11,6 +11,7 @@ import { MainLayout } from "./components/MainLayout";
 import { SignIn } from "./pages/SignIn.tsx";
 import { SignUp } from "./pages/SignUp.tsx";
 import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
+import { MagicLinkSignIn } from "./pages/MagicLinkSignIn.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,13 +25,14 @@ const App = () => (
           {/* Rotas Públicas */}
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/auth/magic-link" element={<MagicLinkSignIn />} />
 
           {/* Rotas Privadas com MainLayout */}
           <Route element={<MainLayout />}>
             <Route path="/" element={<Index />} />
-            <Route path="/booking" element={<Booking />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/booking" element={<Booking />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />

@@ -11,7 +11,7 @@ export function ProtectedRoute() {
 
   if (!session && !loading) {
     // Se não houver sessão, redireciona para a página de login
-    return <Navigate to="/sign-in" replace />;
+    return <Navigate to="/auth/magic-link" replace />;
   }
 
   return <Outlet />;
