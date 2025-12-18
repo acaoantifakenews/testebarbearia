@@ -7,12 +7,12 @@ const queryClient = new QueryClient();
 
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
+    <TooltipProvider>
+      <AuthProvider>
+        <QueryClientProvider client={queryClient}>
           {children}
-        </TooltipProvider>
-      </QueryClientProvider>
-    </AuthProvider>
+        </QueryClientProvider>
+      </AuthProvider>
+    </TooltipProvider>
   );
 }
