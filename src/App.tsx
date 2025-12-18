@@ -11,6 +11,7 @@ import { MainLayout } from "./components/MainLayout";
 import { SignIn } from "./pages/SignIn.tsx";
 import { SignUp } from "./pages/SignUp.tsx";
 import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
+import { AuthLayout } from "./components/AuthLayout.tsx";
 import { MagicLinkSignIn } from "./pages/MagicLinkSignIn.tsx";
 
 const queryClient = new QueryClient();
@@ -22,10 +23,12 @@ const App = () => (
       <Sonner />
       <HashRouter>
         <Routes>
-          {/* Rotas Públicas */}
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/auth/magic-link" element={<MagicLinkSignIn />} />
+          {/* Rotas Públicas com AuthLayout */}
+          <Route element={<AuthLayout />}>
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/auth/magic-link" element={<MagicLinkSignIn />} />
+          </Route>
 
           {/* Rotas Privadas com MainLayout */}
           <Route element={<MainLayout />}>
