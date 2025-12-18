@@ -19,28 +19,30 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <HashRouter>
-          <Routes>
-            {/* Rotas Públicas com AuthLayout */}
-            <Route element={<AuthLayout />}>
-              <Route path="/sign-in" element={<SignIn />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/auth/magic-link" element={<MagicLinkSignIn />} />
-            </Route>
-
-            {/* Rotas Privadas com MainLayout */}
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<Index />} />
-              <Route element={<ProtectedRoute />}>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/booking" element={<Booking />} />
+      <>
+          <Toaster />
+          <Sonner />
+          <HashRouter>
+            <Routes>
+              {/* Rotas Públicas com AuthLayout */}
+              <Route element={<AuthLayout />}>
+                <Route path="/sign-in" element={<SignIn />} />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/auth/magic-link" element={<MagicLinkSignIn />} />
               </Route>
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </HashRouter>
+
+              {/* Rotas Privadas com MainLayout */}
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<Index />} />
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/booking" element={<Booking />} />
+                </Route>
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </HashRouter>
+      </>
     </TooltipProvider>
   </QueryClientProvider>
 );
