@@ -58,17 +58,15 @@ export function MagicLinkSignIn() {
 
   if (isSubmitted) {
     return (
-      <div className="flex h-full items-center justify-center">
-        <Card className="w-full max-w-sm">
-          <CardHeader>
-            <CardTitle className="text-2xl">Verifique seu E-mail</CardTitle>
-            <CardDescription>
-              Enviamos um link de acesso para o seu e-mail. Clique nele para
-              continuar para o agendamento.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle className="text-2xl">Verifique seu E-mail</CardTitle>
+          <CardDescription>
+            Enviamos um link de acesso para o seu e-mail. Clique nele para
+            continuar para o agendamento.
+          </CardDescription>
+        </CardHeader>
+      </Card>
     );
   }
 
