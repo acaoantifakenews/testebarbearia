@@ -1,11 +1,11 @@
-import { useAuth } from "@/contexts/AuthContext";
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "./AuthContext.tsx";
 
 export function ProtectedRoute() {
   const { session } = useAuth();
 
   if (!session) {
-    // Usuário não logado, redireciona para a página de login
+    // Se não houver sessão, redireciona para a página de login
     return <Navigate to="/sign-in" replace />;
   }
 

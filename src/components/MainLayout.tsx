@@ -1,4 +1,4 @@
-import { useAuth } from "@/contexts/AuthContext.tsx";
+import { useAuth } from "./AuthContext.tsx";
 import { supabase } from "@/lib/supabase";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";

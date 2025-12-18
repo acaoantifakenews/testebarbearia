@@ -3,11 +3,14 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, Outlet } from "react-router-dom";
-import Index from "./pages/Index";
-import Booking from "./pages/Booking";
-import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
+import Index from "./pages/Index.tsx";
+import Booking from "./pages/Booking.tsx";
+import Dashboard from "./pages/Dashboard.tsx";
+import NotFound from "./pages/NotFound.tsx";
 import { MainLayout } from "./components/MainLayout";
+import { SignIn } from "./pages/SignIn.tsx";
+import { SignUp } from "./pages/SignUp.tsx";
+import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
 
 const queryClient = new QueryClient();
 
@@ -18,12 +21,19 @@ const App = () => (
       <Sonner />
       <HashRouter>
         <Routes>
-          <Route element={<MainLayout />}> {/* Usando MainLayout para todas as páginas */}
+          {/* Rotas Públicas */}
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+
+          {/* Rotas Privadas com MainLayout */}
+          <Route element={<MainLayout />}>
             <Route path="/" element={<Index />} />
             <Route path="/booking" element={<Booking />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="*" element={<NotFound />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>
     </TooltipProvider>
